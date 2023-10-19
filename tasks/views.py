@@ -3,6 +3,7 @@ from django.http import HttpResponse
 
 from .forms import Taskform
 from .forms import Task
+from django.contrib import messages
 # Create your views here.
 
 from .models import Task
@@ -42,6 +43,12 @@ def editTask(request,id):
         
     else:
         return render(request, 'tasks/edittask.html', {'form':form,'task':task})
+    
+def deleteTask (request,id):
+    task=get_object_or_404(Task,pk=id)
+    task.delete()
+    return redirect('/')
+
 
 
 def helloWorld(request):
