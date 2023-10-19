@@ -47,6 +47,9 @@ def editTask(request,id):
 def deleteTask (request,id):
     task=get_object_or_404(Task,pk=id)
     task.delete()
+
+    messages.info(request,'Tarefa deletada com sucesso.')
+
     return redirect('/')
 
 
